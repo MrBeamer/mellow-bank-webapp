@@ -1,37 +1,40 @@
 "use strict";
 
-// Selected elements
+// Tab
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabsContent = document.querySelectorAll(".operations__content");
 
-//Slider
+// Slider
 const slider = document.querySelector(".slider");
 const slides = document.querySelectorAll(".slide");
 const btnLeft = document.querySelector(".slider__btn--left");
 const btnRight = document.querySelector(".slider__btn--right");
 
-//Tabs component
+// Tabs component
 
-tabsContainer.addEventListener("click", function (event) {
-  const clicked = event.target.closest(".operations__tab");
+function tabsComponent() {
+  tabsContainer.addEventListener("click", function (event) {
+    const clicked = event.target.closest(".operations__tab");
 
-  //Remove active classes
-  tabsContent.forEach((content) =>
-    content.classList.remove("operations__content--active")
-  );
-  tabs.forEach((tab) => tab.classList.remove("operations__tab--active"));
+    // Guard clause
+    if (!clicked) return;
 
-  //Add active class
-  clicked.classList.add("operations__tab--active");
+    // Remove active classes
+    tabsContent.forEach((content) =>
+      content.classList.remove("operations__content--active")
+    );
+    tabs.forEach((tab) => tab.classList.remove("operations__tab--active"));
 
-  //Activate active content
-  document
-    .querySelector(`.operations__content--${clicked.dataset.tab}`)
-    .classList.add("operations__content--active");
+    // Add active class
+    clicked.classList.add("operations__tab--active");
 
-  console.log(clicked);
-});
+    // Activate active content
+    document
+      .querySelector(`.operations__content--${clicked.dataset.tab}`)
+      .classList.add("operations__content--active");
+  });
+}
 
 let currentSlide = 0;
 let maxSlidesLength = slides.length;
@@ -71,3 +74,10 @@ function previousSlide() {
 // Event handlers
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", previousSlide);
+
+// Initializes everything
+function init() {
+  tabsComponent();
+}
+
+init();

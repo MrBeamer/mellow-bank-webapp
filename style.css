@@ -1,4 +1,8 @@
 :root {
+  --color-primary: #2a6a7a;
+  --color-primary-lighter: #3e9bb3;
+  --color-secondary: #f5d6b9;
+  --colo-secondary-lighter: #f8e3cf;
 }
 
 * {
@@ -9,6 +13,10 @@
 }
 
 /* Navbar */
+
+p {
+  font-size: 1.2rem;
+}
 
 .navbar {
   padding-bottom: 17px;
@@ -32,7 +40,7 @@
 
 .header__left {
   padding: 150px 100px 150px 100px;
-  background-color: #2a6a7a;
+  background-color: var(--color-primary);
   color: #ffffff;
   width: 55%;
 }
@@ -252,14 +260,18 @@ ion-icon {
   z-index: 10;
 
   border: none;
-  background: rgba(255, 255, 255, 0.7);
   font-family: inherit;
-  color: #333;
+  background-color: var(--color-secondary);
+  color: #ffffff;
   border-radius: 50%;
   height: 5.5rem;
   width: 5.5rem;
   font-size: 3.25rem;
   cursor: pointer;
+}
+
+.slider__btn:hover {
+  background-color: var(--colo-secondary-lighter);
 }
 
 .slider__btn--left {
@@ -379,6 +391,7 @@ ion-icon {
   justify-content: center;
   color: #ffff;
   text-align: center;
+  font-weight: lighter !important;
 }
 
 .banner__button {
@@ -396,7 +409,6 @@ ion-icon {
 .banner__button:hover {
   background-color: #ffffff;
   color: #2a6a7a;
-
   opacity: 1;
 }
 
