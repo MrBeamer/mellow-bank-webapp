@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Mellow - the most colorful bank you will meet</title>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Mellow</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Features</a>
+            <a class="nav-link" href="#">Operations</a>
+            <a class="nav-link" href="#">Testimonials</a>
+            <a class="nav-link" href="#">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header">
+      <div class="header__left">
+        <h1>
+          <span>Die mobile Bank mit</span>über 5 Millionen <span>Kunden</span>
+        </h1>
+        <ul>
+          <li>✓ Kontaktlose Mastercard</li>
+          <li>✓ 100 % mobil und flexibel</li>
+          <li>✓ Europäische Vollbanklizenz</li>
+          <li>✓ Keine versteckten Gebühren</li>
+        </ul>
+        <button class="btn-show-modal">Open account</button>
+      </div>
+      <div class="header__right">
+        <img
+          src="https://res.cloudinary.com/dxdboxbyb/image/upload/v1613052616/mellow-bank-webapp/ulvcryzewkbxjhrk1sto.png"
+          alt="credit-card"
+        />
+      </div>
+    </div>
+
+    <div class="section" id="section--1">
+      <div class="section__title">
+        <h2 class="section__description">FEATURES</h2>
+        <h3 class="section__header">Banking, leicht gemacht</h3>
+      </div>
+
+      <div class="features">
+        <img
+          src="https://images.unsplash.com/photo-1502920514313-52581002a659?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1494&q=80"
+          alt="See"
+        />
+        <div class="features__feature">
+          <div class="features__icon"><i class="fas fa-globe-europe"></i></div>
+          <h5 class="features__header">Wozu Gebühren zahlen?</h5>
+          <p>
+            Mit deiner Mastercard kannst du in jedem Land an Geldautomaten
+            kostenlos Geld in Euro abheben – und das je nach Kontomodell bis zu
+            8-mal im Monat! Entdecke das gebührenfreie Girokonto, das alles
+            kann.
+          </p>
+        </div>
+
+        <div class="features__feature">
+          <div class="features__icon"><i class="fas fa-mobile-alt"></i></div>
+          <h5 class="features__header">Mobiles Bezahlen</h5>
+          <p>
+            Füge deine Bankkarte mit wenigen Klicks zu Apple Pay oder Google Pay
+            hinzu. Lass den Geldbeutel in der Tasche und zahle direkt mit deinem
+            Smartphone!
+          </p>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1484804959297-65e7c19d7c9f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1614&q=80"
+          alt="See"
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1651&q=80"
+          alt="See"
+        />
+
+        <div class="features__feature">
+          <div class="features__icon"><i class="fas fa-laptop"></i></div>
+          <h5 class="features__header">Banking auf deinem Computer</h5>
+          <p>
+            Für manche Dinge ist dir der Smartphone-Bildschirm vielleicht zu
+            klein. Du kannst N26 auch ganz einfach mit der Web-App am Desktop
+            nutzen.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="section--2">
+      <div class="section__title">
+        <h2 class="section__description">OPERATIONS</h2>
+        <h3 class="section__header">
+          Everything as simple as possible, but no simpler.
+        </h3>
+      </div>
+
+      <div class="operations">
+        <div class="operations__tab-container">
+          <button
+            class="btn operations__tab operations__tab--1 operations__tab--active"
+            data-tab="1"
+          >
+            <span>1 </span>Instant Transfers
+          </button>
+
+          <button class="btn operations__tab operations__tab--2" data-tab="2">
+            <span>2 </span>Instant Loans
+          </button>
+
+          <button class="btn operations__tab operations__tab--3" data-tab="3">
+            <span>3 </span>Instant Closing
+          </button>
+        </div>
+        <!-- content 1 -->
+        <div
+          class="operations__content operations__content--1 operations__content--active"
+        >
+          <div class="operations__icon operations__icon1">
+            <h5 class="operations__header">
+              <i class="fas fa-laptop"></i>Tranfser money to anyone, instantly!
+              No fees, no BS.
+            </h5>
+          </div>
+          <p>
+            Dein Bankkonto auf deinem Smartphone Verwalte all deine Finanzen
+            direkt in der N26 App – setze Kartenlimits, sperre und entsperre
+            deine Karte und sende Geld an Freunde. Alles in Echtzeit.
+          </p>
+        </div>
+        <!-- content 2 -->
+        <div class="operations__content operations__content--2">
+          <div class="operations__icon operations__icon2">
+            <h5 class="operations__header">
+              <i class="fas fa-laptop"></i>Buy a home or make your dreams come
+              true, with instant loans.
+            </h5>
+          </div>
+          <p>
+            Dank Push-Nachrichten in Echtzeit bist du immer auf dem neuesten
+            Stand über deine Kontobewegungen. Egal ob Zahlungen, Einnahmen,
+            Ausgaben oder Daueraufträge – bei N26 erhältst du eine
+            Push-Nachricht nach jeder Transaktion und weißt, wohin dein Geld
+            fließt.
+          </p>
+        </div>
+        <!-- content 3 -->
+        <div class="operations__content operations__content--3">
+          <div class="operations__icon operations__icon3">
+            <h5 class="operations__header">
+              <i class="fas fa-laptop"></i>No longer need your account? No
+              problem! Close it instantly.
+            </h5>
+          </div>
+          <p>
+            Quisquam itaque deserunt ullam, quia ea repellendus provident,
+            ducimus neque ipsam modi voluptatibus doloremque, corrupti laborum.
+            Incidunt numquam perferendis veritatis neque repellendus. Lorem,
+            ipsum dolor sit amet consectetur adipisicing elit. Illo deserunt
+            exercitationem deleniti.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="section--3">
+      <div class="section__title">
+        <h2 class="section__description">TESTIMONIALS</h2>
+        <h3 class="section__header">
+          Everything as simple as possible, but no simpler.
+        </h3>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        © 2021 Michael Beamer. All rights reserved.
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+      integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+      integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
