@@ -36,48 +36,55 @@ function tabsComponent() {
   });
 }
 
-let currentSlide = 0;
-let maxSlidesLength = slides.length;
+function sliderComponent() {
+  let currentSlide = 0;
+  let maxSlidesLength = slides.length;
 
-// Slider component
-
-slides.forEach((s, index) => {
-  s.style.transform = `translateX(${index}00%)`;
-});
-
-// Functions
-
-function goToSlide(slide) {
   slides.forEach((s, index) => {
-    s.style.transform = `translateX(${index - slide}00%)`;
+    s.style.transform = `translateX(${index}00%)`;
+  });
+
+  // Functions
+
+  function goToSlide(slide) {
+    slides.forEach((s, index) => {
+      s.style.transform = `translateX(${index - slide}00%)`;
+    });
+  }
+
+  function nextSlide() {
+    if (maxSlidesLength - 1 === currentSlide) {
+      currentSlide = 0;
+    } else {
+      currentSlide++;
+    }
+    goToSlide(currentSlide);
+  }
+
+  function previousSlide() {
+    if (currentSlide === 0) {
+      currentSlide = maxSlidesLength - 1;
+    } else {
+      currentSlide--;
+    }
+    goToSlide(currentSlide);
+  }
+
+  // Event handlers
+  btnRight.addEventListener("click", nextSlide);
+  btnLeft.addEventListener("click", previousSlide);
+  document.addEventListener("keydown", function (event) {
+    console.log(event);
   });
 }
-
-function nextSlide() {
-  if (maxSlidesLength - 1 === currentSlide) {
-    currentSlide = 0;
-  } else {
-    currentSlide++;
-  }
-  goToSlide(currentSlide);
-}
-
-function previousSlide() {
-  if (currentSlide === 0) {
-    currentSlide = maxSlidesLength - 1;
-  } else {
-    currentSlide--;
-  }
-  goToSlide(currentSlide);
-}
-
-// Event handlers
-btnRight.addEventListener("click", nextSlide);
-btnLeft.addEventListener("click", previousSlide);
 
 // Initializes everything
 function init() {
   tabsComponent();
+  sliderComponent();
 }
 
 init();
+
+// change project height to max-height 285px or try overflow hidden because on desktop its to big - my portfolio
+// delete min height from grid project cards - gets weird when over 1444p why ? google it
