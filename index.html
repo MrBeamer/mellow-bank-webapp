@@ -23,7 +23,7 @@
     />
     <link rel="stylesheet" href="style.css" />
 
-    <title>Mellow - the most colorful bank you will meet</title>
+    <title>Mellow - the lifestyle bank</title>
     <script defer src="script.js"></script>
   </head>
   <body>
@@ -54,11 +54,35 @@
             <a class="nav-link active" aria-current="page" href="#">Features</a>
             <a class="nav-link" href="#">Operations</a>
             <a class="nav-link" href="#">Testimonials</a>
-            <a class="nav-link" href="#">Login</a>
+            <button class="show-modal">Login</button>
           </div>
         </div>
       </div>
     </nav>
+
+    <!-- test model -->
+
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <div class="login_header">
+        <h1>Login</h1>
+      </div>
+      <div class="login__form">
+        <form action="app.html" method="get">
+          <div class="login__data">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" id="username" />
+          </div>
+          <div class="login__data">
+            <i class="fas fa-lock"></i>
+            <input type="text" name="password" id="password" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
 
     <div class="header">
       <div class="header__left">
@@ -76,7 +100,7 @@
       </div>
       <div class="header__right">
         <img
-          src="https://res.cloudinary.com/dxdboxbyb/image/upload/v1613052616/mellow-bank-webapp/ulvcryzewkbxjhrk1sto.png"
+          src="https://res.cloudinary.com/dxdboxbyb/image/upload/v1613239712/mellow-bank-webapp/mabr7xktniajirequjgg.png"
           alt="credit-card"
         />
       </div>
@@ -293,8 +317,8 @@
           </div>
         </div>
 
-        <button class="btn slider__btn slider__btn--left">&larr;</button>
-        <button class="btn slider__btn slider__btn--right">&rarr;</button>
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
         <div class="dots"></div>
       </div>
     </section>
@@ -303,23 +327,23 @@
       <div class="company-key-facts">
         <p>
           2018<br />
-          Gründungsjahr
+          Founding year
         </p>
 
         <p>
           +2500<br />
-          Mitarbeiter
+          Employee
         </p>
 
         <p>
           30<br />
-          Länder
+          Countries
         </p>
 
         <p>
-          +7 Millionen
+          +7 Million
           <br />
-          Kunden
+          Customers
         </p>
       </div>
     </section>
@@ -329,7 +353,7 @@
         <h3>The best day to join Mellow was one year ago</h3>
         <h3>The second best is today</h3>
       </div>
-      <button class="btn banner__button">Girokonto eröffnen</button>
+      <button class="btn banner__button">Open account</button>
     </section>
 
     <div class="footer">
