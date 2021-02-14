@@ -494,6 +494,10 @@ ion-icon {
   margin-top: 20px;
 }
 
+.alert {
+  margin-top: 15px;
+}
+
 /* -------------------------- */
 /* CLASSES TO MAKE MODAL WORK */
 
@@ -508,7 +512,7 @@ ion-icon {
   transform: translate(-50%, -50%);
   width: 48%;
   background-color: white;
-  padding: 6rem;
+  padding: 4rem 6rem 2rem 6rem;
   border-radius: 3px;
   box-shadow: 0 3rem 5rem rgb(0 0 0 / 30%);
   z-index: 6;

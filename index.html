@@ -68,7 +68,7 @@
         <h1>Login</h1>
       </div>
       <div class="login__form">
-        <form action="app.html" method="get">
+        <form action="">
           <div class="login__data">
             <i class="fas fa-user"></i>
             <input type="text" name="username" id="username" />
@@ -78,8 +78,18 @@
             <input type="text" name="password" id="password" />
           </div>
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary btn-submit">
+            Log In
+          </button>
         </form>
+      </div>
+
+      <!-- Alert box -->
+      <div
+        class="hidden alert alert-danger alert-dismissible fade show"
+        role="alert"
+      >
+        Wrong Password or Username
       </div>
     </div>
     <div class="overlay hidden"></div>
