@@ -16,7 +16,7 @@ const dotsContainer = document.querySelector(".dots");
 const account1 = {
   owner: "Michael Beamer",
   username: "MB",
-  password: "1234",
+  password: "1111",
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2, // %
   movementsDates: [
@@ -38,7 +38,7 @@ const account2 = {
   username: "JA",
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 2222,
+  password: "2222",
 
   movementsDates: [
     "2019-11-01T13:15:33.035Z",
@@ -201,44 +201,56 @@ function sliderComponent() {
   dotsContainer.addEventListener("click", dotsSlideControl);
 }
 
-// Initializes everything
-function init() {
-  tabsComponent();
-  sliderComponent();
-  modal();
-}
-
-init();
-
-// LogIn check and setting currentAcc
-
+// Login
 const usernameInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
 const submitFormBtn = document.querySelector(".btn-submit");
 const alert = document.querySelector(".alert");
 
-let currentAcc;
+// App
+const welcomeMessage = document.querySelector(".welcome-message");
 
-submitFormBtn.addEventListener("click", function (event) {
-  event.preventDefault();
+// LogIn check and setting currentAcc
+// let currentAcc;
 
-  currentAcc = accounts.find((acc) => acc.username === usernameInput.value);
-  // if (
-  //   accounts.find(
-  //     (acc) =>
-  //       acc.username === usernameInput.value &&
-  //       acc.password === passwordInput.value
-  //   )
-  // ) {
-  //   // window.location.assign("app.html");
-  //   console.log("hi");
-  // } else {
-  //   alert.classList.remove("hidden");
-  //   console.log("incorrect");
-  //   setTimeout(function () {
-  //     alert.classList.add("hidden");
-  //   }, 3000);
-  // }
-});
+function logIn() {
+  function logInCurrAcc(event) {
+    event.preventDefault();
 
-console.log(currentAcc);
+    let currentAcc = accounts.find(
+      (acc) => acc.username === usernameInput.value
+    );
+    localStorage.setItem("currentAccLocal", JSON.stringify(currentAcc));
+
+    if (currentAcc.password === passwordInput.value) {
+      window.location.assign("app.html");
+    } else {
+      alert.classList.remove("hidden");
+      setTimeout(function () {
+        alert.classList.add("hidden");
+      }, 3000);
+    }
+  }
+
+  submitFormBtn.addEventListener("click", logInCurrAcc);
+}
+
+// Initializes everything
+function init() {
+  if (document.body.contains(tabsContainer)) {
+    tabsComponent();
+    sliderComponent();
+    modal();
+    logIn();
+  } else {
+    console.log("Not loading init");
+  }
+}
+
+init();
+// App Javascript - after login
+let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
+
+// currentAcc = localStorage.getItem("currentAccLocal");
+
+welcomeMessage.textContent = `Welcome back, ${currAccLocal.owner}`;

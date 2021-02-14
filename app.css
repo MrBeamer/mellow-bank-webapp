@@ -1,0 +1,13 @@
+/* Navbar */
+.btn-log-out {
+  background-color: transparent;
+  padding: 5px 26px 5px 26px;
+  border-radius: 3px;
+  border: none;
+  border: 1px solid #2a6a7a;
+}
+
+.btn-log-out:hover {
+  background-color: #2a6a7a;
+  color: #ffffff !important;
+}
