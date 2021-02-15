@@ -17,7 +17,18 @@ const account1 = {
   owner: "Michael Beamer",
   username: "MB",
   password: "1111",
-  movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
+  movements: [
+    200,
+    455.23,
+    -306.5,
+    25000,
+    -642.21,
+    -133.9,
+    79.97,
+    1300,
+    2500,
+    -1100,
+  ],
   interestRate: 1.2, // %
   movementsDates: [
     "2019-11-18T21:31:17.178Z",
@@ -36,7 +47,7 @@ const account1 = {
 const account2 = {
   owner: "Jessica Alba",
   username: "JA",
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30, 2600, -1200],
   interestRate: 1.5,
   password: "2222",
 
@@ -209,6 +220,10 @@ const alert = document.querySelector(".alert");
 
 // App
 const welcomeMessage = document.querySelector(".welcome-message");
+const labelDate = document.querySelector(".date");
+const movContainer = document.querySelector(".movements");
+const operationBtn = document.querySelector(".operation__btn");
+const labelBalance = document.querySelector(".balance__value");
 
 // LogIn check and setting currentAcc
 // let currentAcc;
@@ -250,10 +265,54 @@ function init() {
 init();
 
 // App Javascript - after login
+
+//Creating local storage variable which holds current logged in account
 let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
 
-// currentAcc = localStorage.getItem("currentAccLocal");
-
+// Welcome message shows after logging  in
 welcomeMessage.textContent = `Welcome back, ${
   currAccLocal.owner.split(" ")[0]
 }`;
+
+// Creates date in the right country format
+const now = new Date();
+const options = {
+  hour: "numeric",
+  minute: "numeric",
+  day: "numeric",
+  month: "numeric",
+  year: "numeric",
+  weekday: "long",
+};
+
+labelDate.textContent = new Intl.DateTimeFormat(
+  currAccLocal.locale,
+  options
+).format(now);
+
+// creating new Movements and display
+
+console.log();
+
+function displayMovements(movements) {
+  movContainer.innerHTML = "";
+  movements.forEach((mov, index) => {
+    const type = mov < 0 ? "withdrawal" : "deposit";
+    const html = `<div class="movements__row">
+    <div class="movements__type movements__type--${type}">
+      ${index + 1} ${type}
+    </div>
+    <div class="movements__date">${2 / 26 / 2020}</div>
+    <div class="movements__value">${mov}</div>
+  </div>`;
+    movContainer.insertAdjacentHTML("afterbegin", html);
+  });
+}
+displayMovements(currAccLocal.movements);
+
+// operationBtn.addEventListener("click", function (event) {
+//   event.preventDefault();
+// });
+labelBalance.textContent = `${currAccLocal.movements.reduce(
+  (value, sum) => value + sum
+)}EUR`;
