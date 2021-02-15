@@ -248,9 +248,12 @@ function init() {
 }
 
 init();
+
 // App Javascript - after login
 let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
 
 // currentAcc = localStorage.getItem("currentAccLocal");
 
-welcomeMessage.textContent = `Welcome back, ${currAccLocal.owner}`;
+welcomeMessage.textContent = `Welcome back, ${
+  currAccLocal.owner.split(" ")[0]
+}`;
