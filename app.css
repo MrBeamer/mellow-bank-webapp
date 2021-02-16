@@ -147,31 +147,37 @@
 .operation--loan {
   grid-column: 2;
   grid-row: 2;
-  background-color: #3e9bb3;
-  background-image: linear-gradient(160deg, #3e9bb3 0%, #f8e3cf 100%);
+  background-color: #5db1c7;
+  /* background-image: linear-gradient(160deg, #3e9bb3 0%, #f8e3cf 100%); */
   color: #ffffff;
   border-radius: 1rem;
   padding: 3rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .operation--transfer {
   grid-column: 2;
   grid-row: 3;
-  background-color: #f8e3cf;
-  background-image: linear-gradient(160deg, #f8e3cf 0%, #3e9bb3 100%);
+  background-color: #dba496;
+  /* background-color: #f8e3cf; */
+  /* background-image: linear-gradient(160deg, #f8e3cf 0%, #3e9bb3 100%); */
   color: #ffffff;
   border-radius: 1rem;
   padding: 3rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .operation--close {
   grid-column: 2;
   grid-row: 4;
-  background-color: #3e9bb3;
-  background-image: linear-gradient(160deg, #3e9bb3 0%, #f8e3cf 100%);
+  background-color: #5db1c7;
+
+  /* background-color: #3e9bb3;
+  background-image: linear-gradient(160deg, #3e9bb3 0%, #f8e3cf 100%); */
   color: #ffffff;
   border-radius: 1rem;
   padding: 3rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .operation input {

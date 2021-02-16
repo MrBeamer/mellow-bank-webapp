@@ -124,17 +124,39 @@
       </div>
       <div class="operation operation--transfer">
         <h2>Transfer money</h2>
-        <form action="">
-          <input type="text" placeholder="Transfer to" />
-          <input type="text" placeholder="Amount" />
-          <button type="submit" class="operation__btn">&#8594;</button>
+        <form class="form form--transfer">
+          <input
+            type="text"
+            class="form__input form__input--to"
+            placeholder="Transfer to"
+          />
+          <input
+            type="text"
+            class="form__input form__input--amount"
+            placeholder="Amount"
+          />
+          <button
+            type="submit"
+            class="operation__btn form__btn form__btn--transfer"
+          >
+            &#8594;
+          </button>
         </form>
       </div>
       <div class="operation operation--loan">
         <h2>Request loan</h2>
         <form action="">
-          <input type="text" placeholder="Amount" />
-          <button type="submit" class="operation__btn">&#8594;</button>
+          <input
+            type="text"
+            class="form__input form__input--loan"
+            placeholder="Amount"
+          />
+          <button
+            type="submit"
+            class="operation__btn form__btn form__btn--loan"
+          >
+            &#8594;
+          </button>
         </form>
       </div>
       <div class="operation operation--close">
@@ -142,7 +164,12 @@
         <form action="">
           <input type="text" placeholder="Confirm username" />
           <input type="text" placeholder="Confirm password" />
-          <button type="submit" class="operation__btn">&#8594;</button>
+          <button
+            type="submit"
+            class="operation__btn form__btn form__btn--close"
+          >
+            &#8594;
+          </button>
         </form>
       </div>
 
