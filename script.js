@@ -245,10 +245,13 @@ const closeBtn = document.querySelector(".form__btn--close");
 function logIn() {
   function logInCurrAcc(event) {
     event.preventDefault();
+    localStorage.getItem("localAccounts", JSON.stringify(localAccounts));
+    localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
 
-    let currentAcc = accounts.find(
+    let currentAcc = localAccounts.find(
       (acc) => acc.username === usernameInput.value
     );
+
     localStorage.setItem("currentAccLocal", JSON.stringify(currentAcc));
 
     if (currentAcc?.password === passwordInput.value) {
@@ -366,7 +369,7 @@ transferBtn.addEventListener("click", function (event) {
   event.preventDefault();
   const amount = Number(transferAmount.value);
 
-  const receiver = accounts.find(
+  const receiver = localAccounts.find(
     (acc) => acc.username === transferMoneyTo.value
   );
 
@@ -388,7 +391,11 @@ transferBtn.addEventListener("click", function (event) {
 loanBtn.addEventListener("click", function (event) {
   event.preventDefault();
   const amount = Number(loanAmount.value);
+  localAccounts[1].movements.push(amount);
   currAccLocal.movements.push(amount);
+  localStorage.setItem("currentAccLocal", JSON.stringify(currAccLocal));
+  localStorage.setItem("localAccounts", JSON.stringify(localAccounts));
+
   updateUi(currAccLocal);
   loanAmount.value = "";
 });
