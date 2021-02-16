@@ -39,8 +39,10 @@ const account1 = {
     "2020-04-01T10:17:24.185Z",
     "2020-05-08T14:11:59.604Z",
     "2020-07-26T17:01:17.194Z",
-    "2020-07-28T23:36:17.929Z",
+    "2020-07-28T21:36:17.929Z",
     "2020-08-01T10:51:36.790Z",
+    "2020-09-28T22:36:17.929Z",
+    "2020-02-08T14:11:59.604Z",
   ],
   currency: "EUR",
   locale: "de-DE",
@@ -49,7 +51,7 @@ const account1 = {
 const account2 = {
   owner: "Jessica Alba",
   username: "JA",
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30, 2600, -1200],
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -300, 2600, -1200],
   interestRate: 1.5,
   password: "2222",
 
@@ -62,16 +64,18 @@ const account2 = {
     "2020-04-10T14:43:26.374Z",
     "2020-06-25T18:49:59.371Z",
     "2020-07-26T12:01:20.894Z",
+    "2020-05-25T17:49:59.371Z",
+    "2020-04-26T11:01:20.894Z",
   ],
   currency: "USD",
   locale: "en-US",
 };
 
 const accounts = [account1, account2];
-localStorage.setItem("localAccounts", JSON.stringify(accounts));
-let localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
-console.log(localAccounts);
-console.log(localAccounts.forEach((acc) => console.log(acc)));
+// localStorage.setItem("localAccounts", JSON.stringify(accounts));
+// let localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
+// console.log(localAccounts);
+// console.log(localAccounts.forEach((acc) => console.log(acc)));
 
 // Modal component
 
@@ -239,6 +243,7 @@ const transferBtn = document.querySelector(".form__btn--transfer");
 const loanBtn = document.querySelector(".form__btn--loan");
 const loanAmount = document.querySelector(".form__input--loan");
 const closeBtn = document.querySelector(".form__btn--close");
+const sortBtn = document.querySelector(".btn--sort");
 // LogIn check and setting currentAcc
 // let currentAcc;
 
@@ -306,25 +311,32 @@ labelDate.textContent = new Intl.DateTimeFormat(
 
 // creating new Movements and display
 
-function displayMovements(movements) {
+function displayMovements(acc, sort = false) {
   movContainer.innerHTML = "";
-  movements.forEach((mov, index) => {
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
+
+  movs.forEach((mov, index) => {
     const type = mov < 0 ? "withdrawal" : "deposit";
+
+    const date = new Date(acc.movementsDates[index]);
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    const displayDate = `${day}/${month}/${year}`;
+
     const html = `<div class="movements__row">
     <div class="movements__type movements__type--${type}">
-      ${index + 1} ${type}
+       ${type}
     </div>
-    <div class="movements__date">${2 / 26 / 2020}</div>
+    <div class="movements__date">${displayDate}</div>
     <div class="movements__value">${mov.toFixed(2)}€</div>
   </div>`;
     movContainer.insertAdjacentHTML("afterbegin", html);
   });
 }
-displayMovements(currAccLocal.movements);
-
-// operationBtn.addEventListener("click", function (event) {
-//   event.preventDefault();
-// });
+displayMovements(currAccLocal);
 
 // calculation of the balance and displaying it
 
@@ -389,14 +401,28 @@ loanBtn.addEventListener("click", function (event) {
   event.preventDefault();
   const amount = Number(loanAmount.value);
   currAccLocal.movements.push(amount);
+  const date = new Date().toISOString();
+  currAccLocal.movementsDates.push(date);
   updateUi(currAccLocal);
   loanAmount.value = "";
+});
+
+// sort movemnets
+
+let sorted = false;
+sortBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  displayMovements(currAccLocal, !sorted);
+  sorted = !sorted;
+  sorted
+    ? (sortBtn.innerHTML = `&uarr; SORT`)
+    : (sortBtn.innerHTML = `&darr; SORT`);
 });
 
 // update UI after changing something
 
 function updateUi(acc) {
-  displayMovements(acc.movements);
+  displayMovements(acc);
   calcSummaryDisplay(currAccLocal);
   calcDisplayBalance(currAccLocal);
 }
