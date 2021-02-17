@@ -14,6 +14,12 @@ const btnLeft = document.querySelector(".slider__btn--left");
 const btnRight = document.querySelector(".slider__btn--right");
 const dotsContainer = document.querySelector(".dots");
 
+// Login
+const usernameInput = document.querySelector("#username");
+const passwordInput = document.querySelector("#password");
+const submitFormBtn = document.querySelector(".btn-submit");
+const alert = document.querySelector(".alert");
+
 // Fake user seeding data
 const account1 = {
   owner: "Michael Beamer",
@@ -71,11 +77,8 @@ const account2 = {
   locale: "en-US",
 };
 
-const accounts = [account1, account2];
-// localStorage.setItem("localAccounts", JSON.stringify(accounts));
-// let localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
-// console.log(localAccounts);
-// console.log(localAccounts.forEach((acc) => console.log(acc)));
+let accounts = [account1, account2];
+localStorage.setItem("localAccounts", JSON.stringify(accounts));
 
 // Modal component
 
@@ -222,30 +225,7 @@ function sliderComponent() {
   dotsContainer.addEventListener("click", dotsSlideControl);
 }
 
-// Login
-const usernameInput = document.querySelector("#username");
-const passwordInput = document.querySelector("#password");
-const submitFormBtn = document.querySelector(".btn-submit");
-const alert = document.querySelector(".alert");
-
-// App
-const welcomeMessage = document.querySelector(".welcome-message");
-const labelDate = document.querySelector(".date");
-const movContainer = document.querySelector(".movements");
-const operationBtn = document.querySelector(".operation__btn");
-const labelBalance = document.querySelector(".balance__value");
-const labelIncome = document.querySelector(".summary__value--in");
-const labelOutcome = document.querySelector(".summary__value--out");
-const labelInterest = document.querySelector(".summary__value--interest");
-const transferMoneyTo = document.querySelector(".form__input--to");
-const transferAmount = document.querySelector(".form__input--amount");
-const transferBtn = document.querySelector(".form__btn--transfer");
-const loanBtn = document.querySelector(".form__btn--loan");
-const loanAmount = document.querySelector(".form__input--loan");
-const closeBtn = document.querySelector(".form__btn--close");
-const sortBtn = document.querySelector(".btn--sort");
 // LogIn check and setting currentAcc
-// let currentAcc;
 
 function logIn() {
   function logInCurrAcc(event) {
@@ -271,158 +251,10 @@ function logIn() {
 
 // Initializes everything
 function init() {
-  if (document.body.contains(tabsContainer)) {
-    tabsComponent();
-    sliderComponent();
-    modal();
-    logIn();
-  } else {
-    console.log("Not loading init");
-  }
+  tabsComponent();
+  sliderComponent();
+  modal();
+  logIn();
 }
 
 init();
-
-// App Javascript - after login
-
-//Creating local storage variable which holds current logged in account
-let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
-
-// Welcome message shows after logging  in
-welcomeMessage.textContent = `Welcome back, ${
-  currAccLocal.owner.split(" ")[0]
-}`;
-
-// Creates date in the right country format
-const now = new Date();
-const options = {
-  hour: "numeric",
-  minute: "numeric",
-  day: "numeric",
-  month: "numeric",
-  year: "numeric",
-  weekday: "long",
-};
-
-labelDate.textContent = new Intl.DateTimeFormat(
-  currAccLocal.locale,
-  options
-).format(now);
-
-// creating new Movements and display
-
-function displayMovements(acc, sort = false) {
-  movContainer.innerHTML = "";
-  const movs = sort
-    ? acc.movements.slice().sort((a, b) => a - b)
-    : acc.movements;
-
-  movs.forEach((mov, index) => {
-    const type = mov < 0 ? "withdrawal" : "deposit";
-
-    const date = new Date(acc.movementsDates[index]);
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    const displayDate = `${day}/${month}/${year}`;
-
-    const html = `<div class="movements__row">
-    <div class="movements__type movements__type--${type}">
-       ${type}
-    </div>
-    <div class="movements__date">${displayDate}</div>
-    <div class="movements__value">${mov.toFixed(2)}€</div>
-  </div>`;
-    movContainer.insertAdjacentHTML("afterbegin", html);
-  });
-}
-displayMovements(currAccLocal);
-
-// calculation of the balance and displaying it
-
-function calcDisplayBalance(acc) {
-  const balance = acc.movements.reduce((value, sum) => value + sum, 0);
-  currAccLocal.balance = balance;
-  labelBalance.textContent = `${balance.toFixed(2)}€`;
-}
-
-calcDisplayBalance(currAccLocal);
-
-// calculation of the withDrawal and deposit and displaying it
-function calcSummaryDisplay(acc) {
-  const outcomes = acc.movements
-    .filter((mov) => mov < 0)
-    .reduce((value, sum) => value + sum, 0);
-
-  labelOutcome.textContent = `${Math.abs(outcomes.toFixed(2))}€`;
-
-  const incomes = acc.movements
-    .filter((mov) => mov > 0)
-    .reduce((value, sum) => value + sum, 0);
-
-  labelIncome.textContent = `${incomes.toFixed(2)}€`;
-
-  const interest = acc.movements
-    .filter((mov) => mov > 0)
-    .map((deposit) => (deposit * acc.interestRate) / 100)
-    .filter((interest) => interest >= 1)
-    .reduce((value, sum) => value + sum, 0);
-  labelInterest.textContent = `${interest.toFixed(2)}€`;
-}
-
-calcSummaryDisplay(currAccLocal);
-
-// Transfer money to another account
-
-transferBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  const amount = Number(transferAmount.value);
-
-  const receiver = accounts.find(
-    (acc) => acc.username === transferMoneyTo.value
-  );
-
-  if (
-    amount > 0 &&
-    receiver &&
-    currAccLocal.balance >= amount &&
-    receiver?.username !== currAccLocal.username
-  ) {
-    receiver.movements.push(amount);
-    currAccLocal.movements.push(-amount);
-    updateUi(currAccLocal);
-  }
-  transferAmount.value = "";
-  transferMoneyTo.value = "";
-});
-
-// Get a loan for current Account
-loanBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  const amount = Number(loanAmount.value);
-  currAccLocal.movements.push(amount);
-  const date = new Date().toISOString();
-  currAccLocal.movementsDates.push(date);
-  updateUi(currAccLocal);
-  loanAmount.value = "";
-});
-
-// sort movemnets
-
-let sorted = false;
-sortBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  displayMovements(currAccLocal, !sorted);
-  sorted = !sorted;
-  sorted
-    ? (sortBtn.innerHTML = `&uarr; SORT`)
-    : (sortBtn.innerHTML = `&darr; SORT`);
-});
-
-// update UI after changing something
-
-function updateUi(acc) {
-  displayMovements(acc);
-  calcSummaryDisplay(currAccLocal);
-  calcDisplayBalance(currAccLocal);
-}
