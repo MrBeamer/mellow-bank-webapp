@@ -20,6 +20,11 @@ const passwordInput = document.querySelector("#password");
 const submitFormBtn = document.querySelector(".btn-submit");
 const alert = document.querySelector(".alert");
 
+// New Account
+const btnModalNewAcc = document.querySelector(".btn-show-modal");
+const modal2 = document.querySelector(".modal2");
+const overlay2 = document.querySelector(".overlay2");
+
 // Fake user seeding data
 const account1 = {
   owner: "Michael Beamer",
@@ -92,12 +97,14 @@ function modal() {
     overlay.classList.remove("hidden");
     modal.classList.remove("hidden");
     modal.style.display = "block";
+    document.body.classList.add("stop-scrolling");
   }
 
   function closeModal() {
     overlay.classList.add("hidden");
     modal.classList.add("hidden");
     modal.style.display = "none";
+    document.body.classList.remove("stop-scrolling");
   }
 
   function closeModalWithEsc(event) {
@@ -248,6 +255,27 @@ function logIn() {
 
   submitFormBtn.addEventListener("click", logInCurrAcc);
 }
+
+// Smooth scrolling
+
+document
+  .querySelector(".navbar-nav")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+
+    if (event.target.classList.contains("nav-link")) {
+      const id = event.target.getAttribute("href");
+      console.log(id);
+      document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+// New Account modal
+
+btnModalNewAcc.addEventListener("click", function () {
+  modal2.classList.remove("hidden");
+  overlay2.classList.remove("hidden");
+});
 
 // Initializes everything
 function init() {
