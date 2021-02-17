@@ -80,6 +80,9 @@
   display: flex;
 }
 
+.movements__date {
+}
+
 .movements__type--withdrawal {
   color: #b33e55;
 }
