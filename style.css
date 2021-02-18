@@ -568,17 +568,16 @@ ion-icon {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .modal__form label {
-  font-size: 1.7rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
 .modal__form input {
   font-size: 1.7rem;
-  padding: 1rem 1.5rem;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
 }
@@ -595,7 +594,7 @@ ion-icon {
   position: absolute;
   top: 0.5rem;
   right: 2rem;
-  font-size: 4rem;
+  font-size: 3.5rem;
   cursor: pointer;
   border: none;
   background: none;
@@ -609,4 +608,22 @@ ion-icon {
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+}
+
+.highlight {
+  position: relative;
+}
+
+highlight::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.7;
+  transform: scale(1.07, 1.05) skewX(-15deg);
+  background-image: var(--gradient-primary);
 }

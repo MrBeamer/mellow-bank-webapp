@@ -21,7 +21,8 @@ const submitFormBtn = document.querySelector(".btn-submit");
 const alert = document.querySelector(".alert");
 
 // New Account
-const btnModalNewAcc = document.querySelector(".btn-show-modal");
+const btnModalNewAcc = document.querySelectorAll(".btn-show-modal");
+const btnModalNewAccClose = document.querySelector(".btn--close-modal");
 const modal2 = document.querySelector(".modal2");
 const overlay2 = document.querySelector(".overlay2");
 
@@ -271,10 +272,24 @@ document
   });
 
 // New Account modal
+btnModalNewAcc.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    modal2.classList.remove("hidden");
+    overlay2.classList.remove("hidden");
+    document.body.classList.add("stop-scrolling");
+  });
+});
 
-btnModalNewAcc.addEventListener("click", function () {
-  modal2.classList.remove("hidden");
-  overlay2.classList.remove("hidden");
+// btnModalNewAcc.addEventListener("click", function () {
+//   modal2.classList.remove("hidden");
+//   overlay2.classList.remove("hidden");
+//   document.body.classList.add("stop-scrolling");
+// });
+
+btnModalNewAccClose.addEventListener("click", function () {
+  overlay2.classList.add("hidden");
+  modal2.classList.add("hidden");
+  document.body.classList.remove("stop-scrolling");
 });
 
 // Initializes everything
