@@ -20,7 +20,7 @@ const labelTimer = document.querySelector(".timer");
 //Getting local storage variables which are holding current logged in account and accounts
 let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
 let localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
-let logOut;
+let countDown;
 console.log(localAccounts);
 
 // Welcome message, shows after logging in
@@ -186,8 +186,8 @@ loanBtn.addEventListener("click", function (event) {
     updateUi(currAccLocal);
   }
 
-  clearInterval(logOut);
-  logOut = startLogoutTimer();
+  clearInterval(countDown);
+  countDown = startLogoutTimer();
   loanAmount.value = "";
 });
 
@@ -215,7 +215,7 @@ function startLogoutTimer() {
 
     // when time hits 0 stop timeToLogout and logout
     if (timeToLogout == 0) {
-      clearInterval(countDOwn);
+      clearInterval(countDown);
       window.location.assign("index.html");
     }
     timeToLogout--;
@@ -225,7 +225,12 @@ function startLogoutTimer() {
 
   tick();
   //call timer every second
-  const countDOwn = setInterval(tick, 1000);
-  return countDOwn;
+  const countDown = setInterval(tick, 1000);
+  return countDown;
 }
-startLogoutTimer();
+
+function init() {
+  startLogoutTimer();
+}
+
+init();
