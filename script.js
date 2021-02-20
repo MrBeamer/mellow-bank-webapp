@@ -1,6 +1,6 @@
 "use strict";
 
-// not finished refactored / split to modules
+// not finished refactoring / split to modules
 
 // Tab
 const tabs = document.querySelectorAll(".operations__tab");
@@ -280,17 +280,31 @@ btnModalNewAcc.forEach((btn) => {
   });
 });
 
-// btnModalNewAcc.addEventListener("click", function () {
-//   modal2.classList.remove("hidden");
-//   overlay2.classList.remove("hidden");
-//   document.body.classList.add("stop-scrolling");
-// });
-
 btnModalNewAccClose.addEventListener("click", function () {
   overlay2.classList.add("hidden");
   modal2.classList.add("hidden");
   document.body.classList.remove("stop-scrolling");
 });
+
+const nav = document.querySelector(".nav");
+
+// Menu fade animation
+const handleHover = function (e) {
+  if (e.target.classList.contains("nav-link")) {
+    const link = e.target;
+    const siblings = link.closest(".nav").querySelectorAll(".nav-link");
+    const logo = link.closest(".nav").querySelector("img");
+
+    siblings.forEach((el) => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+// Passing "argument" into handler
+nav.addEventListener("mouseover", handleHover.bind(0.5));
+nav.addEventListener("mouseout", handleHover.bind(1));
 
 // Initializes everything
 function init() {
