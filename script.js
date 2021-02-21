@@ -26,6 +26,9 @@ const btnModalNewAccClose = document.querySelector(".btn--close-modal");
 const modal2 = document.querySelector(".modal2");
 const overlay2 = document.querySelector(".overlay2");
 
+//Animation
+const sections = document.querySelectorAll(".section");
+
 // Fake user seeding data
 const account1 = {
   owner: "Michael Beamer",
@@ -288,7 +291,7 @@ btnModalNewAccClose.addEventListener("click", function () {
 
 const nav = document.querySelector(".nav");
 
-// Menu fade animation
+// Navbar active animation
 const handleHover = function (e) {
   if (e.target.classList.contains("nav-link")) {
     const link = e.target;
@@ -301,6 +304,23 @@ const handleHover = function (e) {
     logo.style.opacity = this;
   }
 };
+
+// Reveal sections animation
+function revealSection(entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+}
+
+const revealOptions = { root: null, threshold: 0.15 };
+
+const sectionsObserver = new IntersectionObserver(revealSection, revealOptions);
+
+sections.forEach((section) => {
+  sectionsObserver.observe(section);
+  section.classList.add("section--hidden");
+});
 
 // Passing "argument" into handler
 nav.addEventListener("mouseover", handleHover.bind(0.5));

@@ -16,6 +16,7 @@ const loanAmount = document.querySelector(".form__input--loan");
 const closeBtn = document.querySelector(".form__btn--close");
 const sortBtn = document.querySelector(".btn--sort");
 const labelTimer = document.querySelector(".timer");
+const closeAccBtn = document.querySelector(".form__btn--close");
 
 //Getting local storage variables which are holding current logged in account and accounts
 let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
@@ -189,6 +190,10 @@ loanBtn.addEventListener("click", function (event) {
   clearInterval(countDown);
   countDown = startLogoutTimer();
   loanAmount.value = "";
+});
+
+closeAccBtn.addEventListener("click", function (event) {
+  event.preventDefault();
 });
 
 // sort movemnets
