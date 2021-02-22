@@ -19,17 +19,21 @@ const labelTimer = document.querySelector(".timer");
 const closeAccBtn = document.querySelector(".form__btn--close");
 
 //Getting local storage variables which are holding current logged in account and accounts
+
 let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
 let localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
 let countDown;
-console.log(localAccounts);
 
 // Welcome message, shows after logging in
-welcomeMessage.textContent = `Welcome back, ${
-  currAccLocal.owner.split(" ")[0]
-}`;
+
+function displayWelcomeMsg() {
+  welcomeMessage.textContent = `Welcome back, ${
+    currAccLocal.owner.split(" ")[0]
+  }`;
+}
 
 // Creates date in the right country format
+
 const now = new Date();
 const options = {
   hour: "numeric",
@@ -46,6 +50,7 @@ labelDate.textContent = new Intl.DateTimeFormat(
 ).format(now);
 
 // Updates UI after changing something
+
 function updateUi(acc) {
   displayMovements(acc);
   calcSummaryDisplay(currAccLocal);
@@ -113,7 +118,8 @@ function calcDisplayBalance(acc) {
 
 calcDisplayBalance(currAccLocal);
 
-// calculation of the withDrawal and deposit and displaying it
+// Calculation of the withDrawal and deposit and displaying it
+
 function calcSummaryDisplay(acc) {
   const outcomes = acc.movements
     .filter((mov) => mov < 0)
@@ -176,6 +182,7 @@ transferBtn.addEventListener("click", function (event) {
 });
 
 // Get a loan for current Account
+
 loanBtn.addEventListener("click", function (event) {
   event.preventDefault();
   const amount = Number(loanAmount.value);
@@ -195,8 +202,6 @@ loanBtn.addEventListener("click", function (event) {
 closeAccBtn.addEventListener("click", function (event) {
   event.preventDefault();
 });
-
-// sort movemnets
 
 let sorted = false;
 sortBtn.addEventListener("click", function (event) {
@@ -224,7 +229,7 @@ function startLogoutTimer() {
       window.location.assign("index.html");
     }
     timeToLogout--;
-    //in each callback call display remaining time to UI
+    //in each call display remaining time to UI
     labelTimer.textContent = `${minutes}:${sec}`;
   };
 
@@ -236,6 +241,7 @@ function startLogoutTimer() {
 
 function init() {
   startLogoutTimer();
+  displayWelcomeMsg();
 }
 
 init();
