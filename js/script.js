@@ -28,8 +28,9 @@ const overlay2 = document.querySelector(".overlay2");
 
 //Animation
 const sections = document.querySelectorAll(".section");
+const nav = document.querySelector(".nav");
 
-// Fake user seeding data
+// User seeding data
 const account1 = {
   owner: "Michael Beamer",
   username: "MB",
@@ -288,8 +289,6 @@ btnModalNewAccClose.addEventListener("click", function () {
   modal2.classList.add("hidden");
   document.body.classList.remove("stop-scrolling");
 });
-
-const nav = document.querySelector(".nav");
 
 // Navbar active animation
 const handleHover = function (e) {
