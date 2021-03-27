@@ -11,3 +11,5 @@ Project is created with:
 - Ionicons
 
 ## Live Preview
+
+https://mellow-bank.netlify.app/

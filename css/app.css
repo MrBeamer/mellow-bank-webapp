@@ -1,5 +1,4 @@
 /* Navbar */
-
 .welcome-message {
   margin-right: 20px;
 }
@@ -26,7 +25,8 @@
   margin: 4rem 6rem;
   display: grid;
   grid-template-columns: 4fr 3fr;
-  grid-template-rows: auto repeat(3, 15rem) auto;
+  /* grid-template-rows: auto repeat(3, 12rem) auto; */
+  grid-template-rows: auto repeat(3, 9rem) auto;
   gap: 2rem;
   transition: all 1s;
 }
@@ -38,7 +38,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .balance__label {
@@ -53,7 +53,7 @@
 }
 
 .balance__value {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 400;
 }
 
@@ -136,6 +136,10 @@
   color: black;
 }
 
+.app .operation {
+  padding: 1rem;
+}
+
 .operation--loan {
   grid-column: 2;
   grid-row: 2;
@@ -150,7 +154,7 @@
 .operation--transfer {
   grid-column: 2;
   grid-row: 3;
-  background-color: #dba496;
+  background-color: #5db1c7;
 
   color: #ffffff;
   border-radius: 1rem;
@@ -174,6 +178,7 @@
   border: none;
   border: 1px solid #ffffff;
   margin-right: 15px;
+  font-weight: 200;
 }
 
 .operation form {
@@ -183,6 +188,7 @@
 .operation h2 {
   margin-bottom: 25px;
   font-weight: lighter;
+  font-size: 1.4rem;
 }
 
 ::-webkit-input-placeholder {
@@ -194,4 +200,211 @@
 .logout-timer {
   grid-row: 5;
   grid-column: 2;
+}
+
+/* 1191px   IPad pro*/
+@media only screen and (max-width: 1296px) {
+  .app {
+    margin: 4rem 0;
+    margin-bottom: 0;
+    padding: 0 2rem;
+    grid-gap: 2rem;
+  }
+
+  .form--transfer input {
+    width: 25%;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .btn--sort {
+    display: none;
+  }
+
+  .operation--close input {
+    width: 50%;
+  }
+
+  .operation--transfer input {
+    width: 50%;
+  }
+}
+
+/* Small tablet, to big tablet from 768 - 1023 px */
+@media only screen and (max-width: 1023px) {
+  .btn-log-out {
+    width: 12%;
+    padding: 7px 26px 5px 20px !important;
+  }
+
+  .app {
+    display: inline-block !important;
+    margin-left: 75px;
+  }
+
+  .operation {
+    margin-bottom: 25px;
+  }
+
+  .summary {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .balance__value {
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+}
+
+/* Small phones, to small tablets from 481 - 767 px */
+@media only screen and (max-width: 767px) {
+  .app {
+    display: inline-block;
+    padding: 0 2rem;
+    margin: 2rem 0;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .balance__grid {
+    display: grid;
+  }
+
+  .balance__date {
+    grid-row: 1;
+  }
+
+  .btn-log-out {
+    width: 27%;
+    padding: 7px 26px 5px 20px !important;
+  }
+
+  .movements__row {
+    padding: 1.5rem 1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .btn--sort {
+    display: none;
+  }
+
+  .balance__value {
+    font-size: 1.8rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__label {
+    font-size: 1.7rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__date {
+    font-size: 1.3rem;
+    letter-spacing: 0.7px;
+    font-weight: 300;
+  }
+
+  .balance {
+    display: block;
+  }
+
+  .summary {
+    margin-top: 12px;
+  }
+
+  .summary p {
+    font-size: 0.7rem;
+  }
+
+  .form--transfer input {
+    width: 40%;
+  }
+
+  .operation {
+    margin-bottom: 20px;
+    padding: 1rem;
+  }
+
+  .operation h2 {
+    margin-bottom: 15px;
+    letter-spacing: 0.4px;
+  }
+
+  .footer-links {
+    display: none;
+  }
+
+  .logout-timer {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .operation--close input {
+    width: 40%;
+  }
+
+  .operation input {
+    font-size: 1rem;
+    font-weight: 200;
+  }
+
+  .operation__btn {
+    padding: 7px 20px 5px 20px !important;
+  }
+}
+
+/* Small phones from 0 - 480 px */
+@media only screen and (max-width: 321px) {
+  .balance__value {
+    font-size: 1.4rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__label {
+    font-size: 1.3rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__date {
+    font-size: 1rem;
+    letter-spacing: 0.7px;
+    font-weight: 300;
+  }
+
+  .movements__row {
+    padding: 1.1rem 1rem;
+    letter-spacing: 0.2px;
+    font-size: 0.8rem;
+  }
+
+  .summary p {
+    font-size: 0.55rem;
+  }
+
+  .operation h2 {
+    letter-spacing: 0.4px;
+    font-size: 1.3rem;
+  }
+
+  .operation input {
+    font-size: 0.8rem;
+    width: 40%;
+  }
+  .operation__btn {
+    padding: 7px 12px 5px 12px !important;
+  }
+
+  .btn-log-out {
+    font-size: 0.85rem;
+    padding: 7px 11px 5px 16px !important;
+  }
+
+  .logout-timer {
+    font-weight: 300;
+    font-size: 0.8rem;
+  }
 }
