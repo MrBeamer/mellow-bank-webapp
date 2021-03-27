@@ -150,7 +150,7 @@
 .operation--transfer {
   grid-column: 2;
   grid-row: 3;
-  background-color: #dba496;
+  background-color: #5db1c7;
 
   color: #ffffff;
   border-radius: 1rem;
@@ -194,4 +194,160 @@
 .logout-timer {
   grid-row: 5;
   grid-column: 2;
+}
+
+/* Small tablet, to big tablet from 768 - 1023 px */
+@media only screen and (max-width: 1023px) {
+  .btn-log-out {
+    width: 12%;
+    padding: 7px 26px 5px 20px !important;
+  }
+
+  .app {
+    display: block !important;
+  }
+}
+
+/* Small phones, to small tablets from 481 - 767 px */
+@media only screen and (max-width: 767px) {
+  .app {
+    display: inline-block;
+    padding: 0 2rem;
+    margin: 2rem 0;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .balance__grid {
+    display: grid;
+  }
+
+  .balance__date {
+    grid-row: 1;
+  }
+
+  .btn-log-out {
+    width: 27%;
+    padding: 7px 26px 5px 20px !important;
+  }
+
+  .movements__row {
+    padding: 1.5rem 1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .btn--sort {
+    display: none;
+  }
+
+  .balance__value {
+    font-size: 1.8rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__label {
+    font-size: 1.7rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__date {
+    font-size: 1.3rem;
+    letter-spacing: 0.7px;
+    font-weight: 300;
+  }
+
+  .balance {
+    display: block;
+  }
+
+  .summary {
+    margin-top: 12px;
+  }
+
+  .summary p {
+    font-size: 0.7rem;
+  }
+
+  .form--transfer input {
+    width: 40%;
+  }
+
+  .operation {
+    margin-bottom: 20px;
+    padding: 1rem;
+  }
+
+  .operation h2 {
+    margin-bottom: 15px;
+    letter-spacing: 0.4px;
+  }
+
+  .footer-links {
+    display: none;
+  }
+
+  .logout-timer {
+    font-size: 1rem;
+  }
+
+  .operation--close input {
+    width: 40%;
+  }
+
+  .operation input {
+    font-size: 1rem;
+    font-weight: 200;
+  }
+
+  .operation__btn {
+    padding: 7px 20px 5px 20px !important;
+  }
+}
+
+/* Small phones from 0 - 480 px */
+@media only screen and (max-width: 321px) {
+  .balance__value {
+    font-size: 1.4rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__label {
+    font-size: 1.3rem;
+    letter-spacing: 0.7px;
+  }
+
+  .balance__date {
+    font-size: 1rem;
+    letter-spacing: 0.7px;
+    font-weight: 300;
+  }
+
+  .movements__row {
+    padding: 1.1rem 1rem;
+    letter-spacing: 0.2px;
+    font-size: 0.8rem;
+  }
+
+  .summary p {
+    font-size: 0.55rem;
+  }
+
+  .operation h2 {
+    letter-spacing: 0.4px;
+    font-size: 1.3rem;
+  }
+
+  .operation input {
+    font-size: 0.8rem;
+    width: 40%;
+  }
+  .operation__btn {
+    padding: 7px 12px 5px 12px !important;
+  }
+
+  .btn-log-out {
+    font-size: 0.85rem;
+    padding: 7px 11px 5px 16px !important;
+  }
 }
