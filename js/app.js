@@ -24,6 +24,8 @@ let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
 let localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
 let countDown;
 
+console.log(localAccounts);
+
 // Welcome message, shows after logging in
 
 function displayWelcomeMsg() {
@@ -175,6 +177,10 @@ transferBtn.addEventListener("click", function (event) {
     currAccLocal.movements.push(-amount);
     const date = new Date().toISOString();
     currAccLocal.movementsDates.push(date);
+    localStorage.setItem("localAccounts", JSON.stringify(localAccounts));
+    // currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
+    // console.log(localAccounts);
+    // console.log(currAccLocal);
     updateUi(currAccLocal);
   }
   transferAmount.value = "";

@@ -87,9 +87,18 @@ const account2 = {
   locale: "en-US",
 };
 
-let accounts = [account1, account2];
-localStorage.setItem("localAccounts", JSON.stringify(accounts));
+// let accounts = [account1, account2];
 
+let accounts = JSON.parse(localStorage.getItem("localAccounts"))
+  ? JSON.parse(localStorage.getItem("localAccounts"))
+  : [account1, account2];
+
+// let accounts = JSON.parse(localStorage.getItem("localAccounts"));
+// if (!accounts) return;
+// accounts = [account1, account2];
+
+// localStorage.setItem("localAccounts", JSON.stringify(accounts));
+console.log(accounts);
 // Modal component
 
 function modal() {
