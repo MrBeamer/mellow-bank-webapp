@@ -48,6 +48,14 @@ p {
   color: #ffffff;
 }
 
+.header__left li {
+letter-spacing: 0.8px;
+}
+
+.header__left h1 {
+  letter-spacing: 0.3px;
+}
+
 .header__left span {
   display: block;
 }
@@ -95,10 +103,16 @@ p {
 
 .section__description {
   color: #2a6a7a;
+  letter-spacing: 0.8px;
+  font-size: 1.5rem;
 }
 
 .section__title {
   margin: 0 auto 1rem auto;
+}
+
+#section--1{
+  padding: 5rem 3rem;
 }
 
 #section--2,
@@ -111,14 +125,28 @@ p {
 }
 
 #section--3 {
-  padding: 7rem 3rem;
-  padding-bottom: 3rem;
+  padding: 3rem 3rem;
+  padding-bottom: 0;
 }
 
 #section--4 {
   background-color: #2a6a7a;
   padding: 2rem 3rem;
 }
+
+#section--2 .section__title {
+  margin: 0 auto 4rem auto;
+}
+
+#section--1 .section__title {
+  margin: 0 auto 2rem auto;
+}
+
+.section__header{
+  font-size: 1.8rem;
+}
+
+
 
 #section--5 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -137,13 +165,8 @@ p {
   grid-template-columns: 1fr 1fr;
 }
 
-#features .section__description  {
-  letter-spacing: 1.4 !important
-
-}
-
 .features__grid img {
-  width: 95%;
+  width: 90%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
@@ -155,10 +178,21 @@ p {
 }
 
 .features__icon i {
-  font-size: 25px;
+  font-size: 30px;
   color: #2a6a7a;
   margin-bottom: 12px;
 }
+
+.features__feature p {
+  font-weight: 300;
+  letter-spacing: 0.8px;
+}
+
+.features__header{
+  font-size: 1.3rem;
+  letter-spacing: 0.8px;
+}
+
 
 /* Operations */
 .operations {
@@ -203,9 +237,9 @@ ion-icon {
 }
 
 .operations__header {
-  font-size: 2.25rem;
-  font-weight: 500;
+  font-size: 1.8rem;
   align-self: center;
+  letter-spacing: 0.8px;
 }
 
 .operations__icon {
@@ -219,6 +253,9 @@ ion-icon {
 
 .operations__content p {
   grid-column: 2;
+  font-size: 1.2rem;
+  letter-spacing: 0.8px;
+  font-weight: 300;
 }
 
 .btn {
@@ -238,11 +275,15 @@ ion-icon {
 /* SLIDER */
 .slider {
   max-width: 100rem;
-  height: 50rem;
+  height: 43rem;
   margin: 0 auto;
   position: relative;
-
   overflow: hidden;
+}
+
+
+#section--3 .section__title{
+  margin: 0 auto -5.5rem 1rem;
 }
 
 .slide {
@@ -266,9 +307,9 @@ ion-icon {
   background-color: var(--color-secondary);
   color: #ffffff;
   border-radius: 50%;
-  height: 4.5rem;
-  width: 4.5rem;
-  font-size: 3.15rem;
+  height: 3.4rem;
+  width: 3.4rem;
+  font-size: 2.15rem;
   cursor: pointer;
 }
 
@@ -279,17 +320,17 @@ ion-icon {
 
 .slider__btn--left {
   left: 6%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
 }
 
 .slider__btn--right {
   right: 6%;
-  transform: translate(50%, -50%);
+  transform: translate(50%, -30%);
 }
 
 .dots {
   position: absolute;
-  bottom: 5%;
+  bottom: 9%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -335,13 +376,13 @@ ion-icon {
 }
 
 .testimonial__header {
-  font-size: 2.25rem;
+  font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
 
 .testimonial__text {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin-bottom: 3.5rem;
   color: #666;
 }
@@ -357,19 +398,19 @@ ion-icon {
 
 .testimonial__photo {
   grid-row: 1 / span 2;
-  width: 6.5rem;
+  width: 5.5rem;
   border-radius: 50%;
 }
 
 .testimonial__name {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 500;
   align-self: end;
   margin: 0;
 }
 
 .testimonial__location {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .section__title--testimonials {
@@ -395,6 +436,11 @@ ion-icon {
   color: #ffff;
   text-align: center;
   font-weight: lighter !important;
+}
+
+.banner__title h3{
+  font-weight: 400;
+  letter-spacing: 0.8px;
 }
 
 .banner__button {
@@ -662,18 +708,52 @@ input:focus {
 }
 
 
-  
   /* Small tablet, to big tablet from 768 - 1023 px */
 @media only screen and (max-width: 1023px) {
+  .testimonial::before {
+    display: none;
+  }
+
+  .features__grid {
+  grid-row-gap: 25px;
+  }
+
+  #section--1 {
+    padding: 5rem 1rem;
+  }
+
+  #section--3 .section__title {
+    margin: 0 auto -8.5rem 1rem;
+  }
 
 }
-  
    /* Small phones, to small tablets from 481 - 767 px */
 @media only screen and (max-width: 767px) {
 
   #section--1{
     padding: 5rem 2.5rem;
   }
+
+  .features__icon i {
+    font-size: 25px;
+  }
+
+  .features__feature p {
+  font-size: 1rem;
+}
+
+.operations__content p {
+font-size: 1.2rem;
+}
+
+
+.section__header {
+  font-size: 1.6rem;
+}
+
+.section__description {
+  font-size: 1.3rem;
+}
 
   .modal{
     width: 100%;
@@ -726,7 +806,7 @@ input:focus {
   }
 
   #operations {
-    padding-bottom: 60px;
+    padding-bottom: 10px;
   }
 
   .btn {
@@ -746,7 +826,7 @@ input:focus {
   .operations__content--active{
     width: 100%;
     grid-template-columns:  auto;
-    grid-row-gap: 22px;
+    grid-row-gap: 10px;
   }
 
   .operations__header{
@@ -819,7 +899,6 @@ input:focus {
   }
 
   #section--3 .section__title {
-    width: 100%;
     margin: 0 auto -10.5rem 1rem;
   }
 
