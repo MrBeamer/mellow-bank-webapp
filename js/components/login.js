@@ -1,10 +1,11 @@
+"use strict";
+
 import { accounts } from "./seed.js";
 
 const usernameInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
 const submitFormBtn = document.querySelector(".btn-submit");
 const alert = document.querySelector(".alert");
-console.log(accounts);
 
 export default function logIn() {
   function logInCurrAcc(event) {

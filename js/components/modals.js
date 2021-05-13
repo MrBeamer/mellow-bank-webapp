@@ -1,3 +1,5 @@
+"use strict";
+
 const modalEle = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnShowModal = document.querySelector(".show-modal");

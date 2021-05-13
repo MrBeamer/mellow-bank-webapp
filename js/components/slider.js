@@ -1,3 +1,5 @@
+"use strict";
+
 // const slider = document.querySelector(".slider");
 const slides = document.querySelectorAll(".slide");
 const btnLeft = document.querySelector(".slider__btn--left");

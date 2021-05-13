@@ -26,9 +26,6 @@ const [notActiveAcc] = localAccounts.filter(
   (acc) => acc.username !== currAccLocal.username
 );
 const accounts = [currAccLocal, notActiveAcc];
-console.log(notActiveAcc);
-console.log(accounts);
-
 let countDown;
 
 // Welcome message, shows after logging in

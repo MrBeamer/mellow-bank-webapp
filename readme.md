@@ -1,23 +1,22 @@
 ## General info
 
-🛠 Work in progress - Mellow - banking website 💵
+Mellow - banking website 💵
 
 ## Functionality info
 
 - Login into two accounts MB or JA
-- Transfer money
+- Transfer money between the accounts (MB and JA)
 - Take a loan
 - Delete account
-- converts money, time, date to region currency
+- converts money, time, date, and currency in regards to the current region/locale
 
 ## Technologies
 
 Project is created with:
 
 - JavaScript
-- Bootstrap
+- Bootstrap (only Navbar)
 - Ionicons
-- CSS grid
 
 ## Live Preview
 
