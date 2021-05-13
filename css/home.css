@@ -21,6 +21,10 @@ p {
   font-size: 1.2rem;
 }
 
+h1 {
+font-size: 2rem;
+}
+
 .navbar {
   padding-bottom: 17px;
   padding-top: 17px;
@@ -547,7 +551,7 @@ ion-icon {
 }
 
 .login__form button {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   width: 50%;
   margin-top: 30px;
 }
@@ -575,7 +579,7 @@ ion-icon {
   transform: translate(-50%, -50%);
   width: 30%;
   background-color: white;
-  padding: 4rem 3rem 2rem;
+  padding: 2.5rem 3rem 2rem;
 
   border-radius: 3px;
   box-shadow: 0 3rem 5rem rgb(0 0 0 / 30%);
@@ -733,14 +737,6 @@ input:focus {
     width: 90%;
     height: 40%;
   } 
-/*
-  .login__form input {
-    width: 90%
-  }
-
-  .modal {
-    padding: 4rem 10rem 1rem;
-  }  */
 
   .features__grid {
     grid-row-gap: 25px;
