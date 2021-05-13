@@ -22,13 +22,20 @@ const closeAccBtn = document.querySelector(".form__btn--close");
 
 let currAccLocal = JSON.parse(localStorage.getItem("currentAccLocal"));
 let localAccounts = JSON.parse(localStorage.getItem("localAccounts"));
+const [notActiveAcc] = localAccounts.filter(
+  (acc) => acc.username !== currAccLocal.username
+);
+const accounts = [currAccLocal, notActiveAcc];
+console.log(notActiveAcc);
+console.log(accounts);
+
 let countDown;
 
 // Welcome message, shows after logging in
 
 function displayWelcomeMsg() {
   welcomeMessage.textContent = `Welcome back, ${
-    currAccLocal.owner.split(" ")[0]
+    accounts[0].owner.split(" ")[0]
   }`;
 }
 
@@ -45,7 +52,7 @@ const options = {
 };
 
 labelDate.textContent = new Intl.DateTimeFormat(
-  currAccLocal.locale,
+  accounts[0].locale,
   options
 ).format(now);
 
@@ -53,8 +60,8 @@ labelDate.textContent = new Intl.DateTimeFormat(
 
 function updateUi(acc) {
   displayMovements(acc);
-  calcSummaryDisplay(currAccLocal);
-  calcDisplayBalance(currAccLocal);
+  calcSummaryDisplay(accounts[0]);
+  calcDisplayBalance(accounts[0]);
 }
 
 function formatCurrency(value, locale, currency) {
@@ -89,8 +96,8 @@ function displayMovements(acc, sort = false) {
 
     const formattedMov = formatCurrency(
       mov,
-      currAccLocal.locale,
-      currAccLocal.currency
+      accounts[0].locale,
+      accounts[0].currency
     );
     const html = `<div class="movements__row">
       <div class="movements__type movements__type--${type}">
@@ -102,21 +109,21 @@ function displayMovements(acc, sort = false) {
     movContainer.insertAdjacentHTML("afterbegin", html);
   });
 }
-displayMovements(currAccLocal);
+displayMovements(accounts[0]);
 
 // calculation of the balance and displaying it
 
 function calcDisplayBalance(acc) {
   const balance = acc.movements.reduce((value, sum) => value + sum, 0);
-  currAccLocal.balance = balance;
+  accounts[0].balance = balance;
   labelBalance.textContent = formatCurrency(
-    currAccLocal.balance,
-    currAccLocal.locale,
-    currAccLocal.currency
+    accounts[0].balance,
+    accounts[0].locale,
+    accounts[0].currency
   );
 }
 
-calcDisplayBalance(currAccLocal);
+calcDisplayBalance(accounts[0]);
 
 // Calculation of the withDrawal and deposit and displaying it
 
@@ -127,8 +134,8 @@ function calcSummaryDisplay(acc) {
 
   labelOutcome.textContent = formatCurrency(
     Math.abs(outcomes),
-    currAccLocal.locale,
-    currAccLocal.currency
+    accounts[0].locale,
+    accounts[0].currency
   );
 
   const incomes = acc.movements
@@ -137,8 +144,8 @@ function calcSummaryDisplay(acc) {
 
   labelIncome.textContent = formatCurrency(
     Math.abs(incomes),
-    currAccLocal.locale,
-    currAccLocal.currency
+    accounts[0].locale,
+    accounts[0].currency
   );
 
   const interest = acc.movements
@@ -148,12 +155,12 @@ function calcSummaryDisplay(acc) {
     .reduce((value, sum) => value + sum, 0);
   labelInterest.textContent = formatCurrency(
     Math.abs(interest),
-    currAccLocal.locale,
-    currAccLocal.currency
+    accounts[0].locale,
+    accounts[0].currency
   );
 }
 
-calcSummaryDisplay(currAccLocal);
+calcSummaryDisplay(accounts[0]);
 
 // Transfer money to another account
 
@@ -161,21 +168,23 @@ transferBtn.addEventListener("click", function (event) {
   event.preventDefault();
   const amount = Number(transferAmount.value);
 
-  const receiver = localAccounts.find(
+  const receiver = accounts.find(
     (acc) => acc.username === transferMoneyTo.value
   );
 
   if (
     amount > 0 &&
     receiver &&
-    currAccLocal.balance >= amount &&
-    receiver?.username !== currAccLocal.username
+    accounts[0].balance >= amount &&
+    receiver?.username !== accounts[0].username
   ) {
     receiver.movements.push(amount);
-    currAccLocal.movements.push(-amount);
+    accounts[0].movements.push(-amount);
     const date = new Date().toISOString();
-    currAccLocal.movementsDates.push(date);
-    updateUi(currAccLocal);
+    accounts[0].movementsDates.push(date);
+    accounts[1].movementsDates.push(date);
+    localStorage.setItem("updatedAccounts", JSON.stringify(accounts)); //updates local storage
+    updateUi(accounts[0]);
   }
   transferAmount.value = "";
   transferMoneyTo.value = "";
@@ -187,11 +196,12 @@ loanBtn.addEventListener("click", function (event) {
   event.preventDefault();
   const amount = Number(loanAmount.value);
 
-  if (amount > 0 && currAccLocal.movements.some((mov) => mov >= amount * 0.1)) {
-    currAccLocal.movements.push(amount);
+  if (amount > 0 && accounts[0].movements.some((mov) => mov >= amount * 0.1)) {
+    accounts[0].movements.push(amount);
     const date = new Date().toISOString();
-    currAccLocal.movementsDates.push(date);
-    updateUi(currAccLocal);
+    accounts[0].movementsDates.push(date);
+    localStorage.setItem("updatedAccounts", JSON.stringify(accounts)); //updates local storage
+    updateUi(accounts[0]);
   }
 
   clearInterval(countDown);
@@ -206,7 +216,7 @@ closeAccBtn.addEventListener("click", function (event) {
 let sorted = false;
 sortBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  displayMovements(currAccLocal, !sorted);
+  displayMovements(accounts[0], !sorted);
   sorted = !sorted;
   sorted
     ? (sortBtn.innerHTML = `&uarr; SORT`)
