@@ -1,6 +1,5 @@
 "use strict";
 
-//Animation
 const sections = document.querySelectorAll(".section");
 
 // Reveal sections animation

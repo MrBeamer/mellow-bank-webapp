@@ -3,7 +3,6 @@
 const nav = document.querySelector(".nav");
 
 export default function navbarAnimation() {
-  // Navbar active animation
   function handleHover(e) {
     if (e.target.classList.contains("nav-link")) {
       const link = e.target;
